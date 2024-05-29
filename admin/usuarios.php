@@ -1,6 +1,12 @@
 <?php 
 require_once "../inc/cabecalho-admin.php";
+require_once "../inc/funcoes-usuarios.php";
+
+// Chamando a função que carrega/lista/lê os usuários
+$listaDeUsuarios = lerUsuarios($conexao);
+
 ?>
+<pre><?=var_dump($listaDeUsuarios)?></pre>
 
 
 <div class="row">
