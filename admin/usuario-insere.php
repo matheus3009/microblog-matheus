@@ -1,6 +1,30 @@
 <?php 
 require_once "../inc/cabecalho-admin.php";
+
+// Importando as funções de manipulação dos usuários
+require_once "../inc/funcoes-usuarios.php";
+
+if (isset ($_POST['inserir'])) {
+	// Capturando os dados digitados
+	$nome = $_POST['nome'];
+	$email = $_POST['email'];
+	$tipo = $_POST['tipo'];
+
+	//capturando a senha e codificando 
+	$senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
+
+	echo $nome, $email, $tipo, $senha;
+
+	// Chamando a função de inserir usuário e passando os dados
+	inserirUsuario($conexao, $nome, $email, $tipo, $senha);
+
+	header("location:usuarios.php");
+}
+
+
 ?>
+
+
 
 
 <div class="row">
