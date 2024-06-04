@@ -42,8 +42,11 @@ $listaDeUsuarios = lerUsuarios($conexao);
 						<td> <?=$usuario["email"]?>  </td>
 						<td>  <?=$usuario["tipo"]?>  </td>
 						<td class="text-center">
+
+						<!-- Atenção ao endereço/URL indicado no link: nós criamos um parâmetro de url chamado id contendo o valor dinâmico do id de cada usuário -->
 							<a class="btn btn-warning" 
-							href="usuario-atualiza.php">
+						href="usuario-atualiza.php?id=<?=$usuario["id"]?>">
+
 							<i class="bi bi-pencil"></i> Atualizar
 							</a>
 						
