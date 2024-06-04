@@ -1,6 +1,16 @@
 <?php 
 require_once "../inc/cabecalho-admin.php";
+require_once "../inc/funcoes-usuarios.php";
+
+/* Pegando o valor do parâmetro id vindo da URL */
+
+$id = $_GET['id'];
+
+/* Executando a função com o id e recuperando os dados do usuário selecionado */
+
+$dadosUsuario = lerUmUsuario($conexao, $id);
 ?>
+<pre><?=var_dump($dadosUsuario)?></pre>
 
 
 <div class="row">
@@ -14,12 +24,12 @@ require_once "../inc/cabecalho-admin.php";
 
 			<div class="mb-3">
 				<label class="form-label" for="nome">Nome:</label>
-				<input class="form-control" type="text" id="nome" name="nome" required>
+				<input value="<?=$dadosUsuario['nome']?>" class="form-control" type="text" id="nome" name="nome" required>
 			</div>
 
 			<div class="mb-3">
 				<label class="form-label" for="email">E-mail:</label>
-				<input class="form-control" type="email" id="email" name="email" required>
+				<input value="<?=$dadosUsuario['email']?>" class="form-control" type="email" id="email" name="email" required>
 			</div>
 
 			<div class="mb-3">
@@ -45,5 +55,6 @@ require_once "../inc/cabecalho-admin.php";
 
 <?php 
 require_once "../inc/rodape-admin.php";
+
 ?>
 
