@@ -14,7 +14,7 @@ mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
 function lerUsuarios($conexao){
     $sql = "SELECT id, nome, tipo, email FROM usuarios";
 
-  $resultado =   mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+  $resultado =    mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
 
     
     //retornamos resultado TRANSFORMADO em array associativo

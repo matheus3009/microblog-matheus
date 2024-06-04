@@ -6,7 +6,6 @@ require_once "../inc/funcoes-usuarios.php";
 $listaDeUsuarios = lerUsuarios($conexao);
 
 ?>
-<pre><?=var_dump($listaDeUsuarios)?></pre>
 
 
 <div class="row">
@@ -26,6 +25,8 @@ $listaDeUsuarios = lerUsuarios($conexao);
 		
 			<table class="table table-hover">
 				<thead class="table-light">
+
+				
 					<tr>
 						<th>Nome</th>
 						<th>E-mail</th>
@@ -35,7 +36,7 @@ $listaDeUsuarios = lerUsuarios($conexao);
 				</thead>
 
 				<tbody>
-
+					<?php foreach ($listaDeUsuarios as $usuario) { ?>
 					<tr>
 						<td> Nome... </td>
 						<td> E-mail... </td>
@@ -52,7 +53,7 @@ $listaDeUsuarios = lerUsuarios($conexao);
 							</a>
 						</td>
 					</tr>
-
+					<?php } ?>
 				</tbody>                
 			</table>
 	</div>
