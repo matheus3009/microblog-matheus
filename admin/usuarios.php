@@ -51,7 +51,7 @@ $listaDeUsuarios = lerUsuarios($conexao);
 							</a>
 						
 							<a class="btn btn-danger excluir" 
-							href="usuario-exclui.php">
+							href="usuario-exclui.php?id=<?=$usuario["id"]?>">
 							<i class="bi bi-trash"></i> Excluir
 							</a>
 						</td>
