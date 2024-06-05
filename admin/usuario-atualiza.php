@@ -2,6 +2,7 @@
 require_once "../inc/cabecalho-admin.php";
 require_once "../inc/funcoes-usuarios.php";
 
+verificaNivel();
 /* Pegando o valor do parâmetro id vindo da URL */
 
 $id = $_GET['id'];

@@ -4,6 +4,8 @@ require_once "../inc/cabecalho-admin.php";
 // Importando as funções de manipulação dos usuários
 require_once "../inc/funcoes-usuarios.php";
 
+
+ verificaNivel();
 if (isset ($_POST['inserir'])) {
 	// Capturando os dados digitados
 	$nome = $_POST['nome'];

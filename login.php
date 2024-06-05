@@ -6,7 +6,7 @@ require_once "inc/funcoes-usuarios.php";
 
 /* Mensagem de feedback */
 
-if(isset($_GEt['campos_obrigatorios'])){
+if(isset($_GET['campos_obrigatorios'])){
 	$mensagem = "preencha e-mail e senha";
 } elseif(isset($_GET['dados_incorretos'])){
 	$mensagem = "Dados incorretos, verifique e tente novamente";
@@ -21,6 +21,7 @@ if (isset($_POST['entrar'])) {
 	//validando os campos
 	if (empty($_POST['email']) || empty($_POST['senha'])) {
 		header("location:login.php?campos_obrigatorios");
+		exit;
 	}
 
 	// Capturando os dados digitados
