@@ -1,5 +1,23 @@
 <?php
-require "inc/cabecalho.php"; 
+require_once "inc/cabecalho.php"; 
+require_once "inc/funcoes-sessao.php";
+require_once "inc/funcoes-usuarios.php";
+
+
+if (isset($_POST['entrar'])) {
+	
+	//validando os campos
+	if (empty($_POST['email']) || empty($_POST['senha'])) {
+		header("location:login.php?campos_obrigatorios");
+	}
+
+	// Capturando os dados digitados
+	$email = $_POST['email'];
+	$senha = $_POST['senha'];
+	/* 1) Buscnfdo no banco de dados, através do e-mail digitado, se existe um usuário cadastrado. */
+
+	$usuario = buscarUsuario($conexao, $email);
+}
 ?>
 
 <div class="row">
