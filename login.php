@@ -4,6 +4,18 @@ require_once "inc/funcoes-sessao.php";
 require_once "inc/funcoes-usuarios.php";
 
 
+/* Mensagem de feedback */
+
+if(isset($_GEt['campos_obrigatorios'])){
+	$mensagem = "preencha e-mail e senha";
+} elseif(isset($_GET['dados_incorretos'])){
+	$mensagem = "Dados incorretos, verifique e tente novamente";
+} elseif(isset($_GET['saiu'])){
+	$mensagem = "você saiu do sistema ... até breve";
+} elseif(isset($_GET['acesso_negado'])){
+	$mensagem = "você deve logar primeiro";
+}
+
 if (isset($_POST['entrar'])) {
 	
 	//validando os campos
@@ -18,9 +30,19 @@ if (isset($_POST['entrar'])) {
 
 	$usuario = buscarUsuario($conexao, $email);
 
-	echo "<pre>";
-	var_dump($usuario);
-	echo "</pre>";
+	/* 2) Verificação de usuario e senha
+	Se o usuário/e-mail existe no banco E a senha digitada for igual a do banco... */
+	if($usuario !== null && password_verify($senha, $usuario['senha'])){
+		//... entãom, inicie o processo de login
+		login($usuario['id'], $usuario['nome'], $usuario['tipo']);
+
+		// Redirecione para a index admin
+		header("location:admin/index.php");
+	}else{
+		// Senão, senha está errada e não pode entrar no sistema
+		header("location:login.php?dados_incorretos");
+	}
+
 }
 ?>
 
@@ -29,10 +51,11 @@ if (isset($_POST['entrar'])) {
     <h2 class="text-center fw-light">Acesso à área administrativa</h2>
 
         <form action="" method="post" id="form-login" name="form-login" class="mx-auto w-50" autocomplete="off">
-
+			<?php if(isset($mensagem)) { ?>
 				<p class="my-2 alert alert-warning text-center">
-					Mensagens de feedback...
+					<?=$mensagem?>
 				</p>                
+				<?php } ?>
 
 				<div class="mb-3">
 					<label for="email" class="form-label">E-mail:</label>

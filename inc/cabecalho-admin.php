@@ -2,6 +2,10 @@
 require_once "funcoes-sessao.php";
 verificaAcesso();
 
+
+/* Se o parâmetro de URL "sair" existir, ou seja, quando o link for clicadom então execute a função logout */
+if(isset($_GET['sair'])) logout();
+
 // Guardando o nome da página atual
 $pagina = basename($_SERVER['PHP_SELF']);
 ?>
@@ -52,7 +56,7 @@ $pagina = basename($_SERVER['PHP_SELF']);
                 <a class="nav-link" href="../index.php" target="_blank">Área pública</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link fw-bold" href=""> <i class="bi bi-x-circle"></i> Sair</a>
+                <a class="nav-link fw-bold" href="?sair"> <i class="bi bi-x-circle"></i> Sair</a>
             </li>
         </ul>
 

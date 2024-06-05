@@ -21,7 +21,7 @@ function verificaAcesso(){
         session_destroy();
 
         // Fazemos o usuário voltar para a página login
-        header("location:../login.php");
+        header("location:../login.php?acesso_negado");
 
         // Paramos qualquer outra execução/processamento
         exit; //ou die()
@@ -39,7 +39,7 @@ function login($id, $nome, $tipo){
 
 function logout(){
     session_destroy();
-    header("location:../login.php");
+    header("location:../login.php?saiu");
     exit; // ou die
 }
 ?>
