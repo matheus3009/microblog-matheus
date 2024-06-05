@@ -17,6 +17,10 @@ if (isset($_POST['entrar'])) {
 	/* 1) Buscnfdo no banco de dados, através do e-mail digitado, se existe um usuário cadastrado. */
 
 	$usuario = buscarUsuario($conexao, $email);
+
+	echo "<pre>";
+	var_dump($usuario);
+	echo "</pre>";
 }
 ?>
 
