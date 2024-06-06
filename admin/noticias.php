@@ -44,7 +44,7 @@ $listaDeNoticias = lerNoticias($conexao, $idUsuario, $tipoUsuario);
 
 						<tr>
 							<td><?= $noticia['titulo'] ?></td>
-							<td> <?=date("d/m/Y h:i", strtotime($noticia['data']))?> </td>
+							<td> <?=formataData(($noticia['data']))?> </td>
 							<td> <?= $noticia['nome'] ?> </td>
 
 							<td class="text-center">

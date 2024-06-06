@@ -1,6 +1,11 @@
 <?php
 require "conecta.php";
 
+function formataData($data){
+    return date("d/m/Y H:i", strtotime($data));
+}
+
+
 /* Array para validação dos tipos permitidos */
 function upload($arquivo)
 {
