@@ -112,6 +112,9 @@ function atualizarNoticia($conexao, $titulo, $texto, $resumo, $imagem, $idNotici
     mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
 }
 
-function excluirNoticia($conexao)
+function excluirNoticia($conexao, $id)
 {
+    $sql = "DELETE FROM noticias WHERE id = $id";
+
+    mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
 }
