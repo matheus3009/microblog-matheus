@@ -43,24 +43,43 @@ function inserirNoticia($conexao, $titulo, $texto, $resumo, $nomeImagem, $usuari
     mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
 }
 
-function lerNoticias($conexao, $idUsuario, $tipoUsuario)
-{
-    $sql = "SELECT
-     noticias.id,
-     noticias.titulo,
-     noticias.data,
-     usuarios.nome
-      FROM noticias JOIN usuarios
-      ON noticias.usuario_id = usuarios.id
-       ORDER BY data DESC";
+function lerNoticias($conexao, $idUsuario, $tipoUsuario){
+
+    if($tipoUsuario == 'admin'){
+        // Admin pode ver TUDO
+        $sql = "SELECT
+        noticias.id,
+        noticias.titulo, 
+        noticias.data,
+        usuarios.nome
+        FROM noticias JOIN usuarios
+        ON noticias.usuario_id = usuarios.id 
+        ORDER BY data DESC";
+    } else {
+        // Editor pode ver SOMENTE o DELE/DELA
+        $sql = "SELECT titulo, data, id FROM noticias WHERE usuario_id = $idUsuario ORDER BY data DESC";
+    }
+
 
     $resultado = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
 
     return mysqli_fetch_all($resultado, MYSQLI_ASSOC);
 }
 
-function lerUmaNoticia($conexao)
+function lerUmaNoticia($conexao, $idNoticia, $idUsuario, $tipoUsuario)
 {
+    if ($tipoUsuario == 'admin') {
+        // pode carregar/ver qualquer notícia
+         $sql = "SELECT * FROM noticias WHERE id = $idNoticia";
+   
+    } else {
+         // Pode carregar/var SOMENTE SUA notícia  
+         $sql = "SELECT * FROM noticias WHERE id = $idNoticia AND usuario_id = $idUsuario";
+    }
+    
+    $resultado = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+
+    return mysqli_fetch_assoc($resultado);
 }
 
 function atualizarNoticia($conexao)

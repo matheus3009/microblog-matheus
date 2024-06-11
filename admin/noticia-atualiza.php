@@ -1,6 +1,25 @@
 <?php
 require_once "../inc/cabecalho-admin.php";
+require_once "../inc/funcoes-noticias.php";
+
+
+
+// Capturando o id a notícia
+$idNoticia = $_GET['id'];
+
+// Capturando o id do usuário logado 
+$idUsuario = $_SESSION['id'];
+
+// Capturando o tipo do usuário logado
+$tipoUsuario = $_SESSION['tipo'];
+
+// Chamando a função e recuperar os dados da notícia
+$dadosNoticia = lerUmaNoticia(
+    $conexao, $idNoticia, $idUsuario, $tipoUsuario
+);
 ?>
+
+<pre><?=var_dump($dadosNoticia)?></pre>
 
 
 <div class="row">
