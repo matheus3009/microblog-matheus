@@ -112,9 +112,32 @@ function atualizarNoticia($conexao, $titulo, $texto, $resumo, $imagem, $idNotici
     mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
 }
 
-function excluirNoticia($conexao, $id)
-{
-    $sql = "DELETE FROM noticias WHERE id = $id";
+function excluirNoticia($conexao, $idNoticia, $idUsuario, $tipoUsuario){
+    if($tipoUsuario == 'admin'){
+        $sql = "DELETE FROM noticias WHERE id = $idNoticia";
+    } else {
+        $sql = "DELETE FROM noticias WHERE id = $idNoticia AND usuario_id = $idUsuario";
+    }
 
     mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
 }
+
+/* **************************************** */
+
+/* Funções usadas nas páginas PÚBLICAS do Microblog:
+index, noticia, resultados */
+
+//index.php
+function lerTodasNoticias($conexao){
+    $sql = "SELECT titulo, imagem, resumo, id FROM noticias ORDER BY data DESC";
+
+    $resultado = mysqli_query($conexao, $sql) or die(mysqli_error($conexao));
+
+    return mysqli_fetch_all($resultado, MYSQLI_ASSOC);
+}
+
+// noticia.php
+function lerNoticiaCompleta($conexao){}
+
+// resultados.php
+function busca($conexao){}

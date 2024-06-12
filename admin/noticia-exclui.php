@@ -7,7 +7,11 @@ verificaAcesso();
 
 $idNoticia = $_GET['id'];// pegando o id
 
-excluirNoticia($conexao, $idNoticia);
+$idUsuario = $_SESSION['id'];
+
+$tipoUsuario = $_SESSION['tipo'];
+
+excluirNoticia($conexao, $idNoticia, $idUsuario, $tipoUsuario);
 
 header("location:noticias.php")
 
