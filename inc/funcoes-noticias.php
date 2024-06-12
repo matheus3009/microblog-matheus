@@ -155,4 +155,20 @@ function lerNoticiaCompleta($conexao, $id){
 }
 
 // resultados.php
-function busca($conexao){}
+function busca($conexao, $termoDigitado){
+    /* Atenção ao uso do operador LIKE em vez de = e do operador coringa %
+    
+    Ambos são necessários para que a busca seja mais abrangente, permitindo que o termo esteja em qualquer lugar dentro das colunas
+    */
+    $sql = "SELECT id, data, titulo, resumo FROM noticias 
+    WHERE 
+     titulo LIKE '%$termoDigitado%' OR
+     resumo LIKE '%$termoDigitado%' OR 
+     texto LIKE '%$termoDigitado%'
+    
+    ORDER BY data DESC ";
+
+    $resultado = mysqli_query($conexao, $sql) or die (mysqli_error($conexao));
+
+    return mysqli_fetch_all($resultado, MYSQLI_ASSOC);
+}

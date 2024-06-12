@@ -16,7 +16,7 @@ $noticiaCompleta = lerNoticiaCompleta($conexao, $id);
             <time><?=$noticiaCompleta['data']?></time> - <span><?=$noticiaCompleta['nome']?></span>
         </p>
         <img src="imagens/<?=$noticiaCompleta['imagem']?>" alt="" class="float-start pe-2 img-fluid">
-        <p><?=$noticiaCompleta['texto']?></p>
+        <p class="ajusta-texto"><?=$noticiaCompleta['texto']?></p>
     </article>
     
 
