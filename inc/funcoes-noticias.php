@@ -137,7 +137,22 @@ function lerTodasNoticias($conexao){
 }
 
 // noticia.php
-function lerNoticiaCompleta($conexao){}
+function lerNoticiaCompleta($conexao, $id){
+    $sql = "SELECT
+        noticias.id,
+        noticias.titulo,
+        noticias.texto,
+        noticias.imagem, 
+        noticias.data,
+        usuarios.nome FROM noticias JOIN usuarios
+        ON noticias.usuario_id = usuarios.id WHERE noticias.id = $id
+        ORDER BY data DESC";
+
+        $resultado = mysqli_query($conexao,$sql) or die(mysqli_error($conexao));
+
+        return mysqli_fetch_assoc($resultado);
+
+}
 
 // resultados.php
 function busca($conexao){}

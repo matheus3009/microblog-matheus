@@ -1,17 +1,22 @@
 <?php
-require "inc/cabecalho.php"; 
+require_once "inc/cabecalho.php"; 
+require_once "inc/funcoes-noticias.php"; 
+
+$id = $_GET['id'];
+
+$noticiaCompleta = lerNoticiaCompleta($conexao, $id);
 ?>
 
 
 <div class="row my-1 mx-md-n1">
 
     <article class="col-12">
-        <h2> Título da notícia... </h2>
+        <h2> <?=$noticiaCompleta['titulo']?> </h2>
         <p class="font-weight-light">
-            <time>Data da notícia...</time> - <span>Autor da notícia</span>
+            <time><?=$noticiaCompleta['data']?></time> - <span><?=$noticiaCompleta['nome']?></span>
         </p>
-        <img src="imagens/abstrato.jpg" alt="" class="float-start pe-2 img-fluid">
-        <p>Texto da notícia...</p>
+        <img src="imagens/<?=$noticiaCompleta['imagem']?>" alt="" class="float-start pe-2 img-fluid">
+        <p><?=$noticiaCompleta['texto']?></p>
     </article>
     
 
