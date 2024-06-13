@@ -4,9 +4,9 @@ require_once "../inc/funcoes-noticias.php";
 
 
 if(isset($_POST['inserir'])){
-	$titulo = $_POST['titulo'];
-	$texto = $_POST['texto'];
-	$resumo = $_POST['resumo'];
+	$titulo = htmlspecialchars($_POST['titulo']);
+	$texto = htmlspecialchars($_POST['texto']);
+	$resumo = htmlspecialchars($_POST['resumo']);
 
 	/* Obtendo o id do usuário que está logado inserindo a noticia. Portanto, a notícia será associada so usuário devido ao uso de chave estrangeira e relacionamento no banco. */
 	$usuarioId = $_SESSION['id'];

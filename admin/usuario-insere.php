@@ -8,9 +8,9 @@ require_once "../inc/funcoes-usuarios.php";
  verificaNivel();
 if (isset ($_POST['inserir'])) {
 	// Capturando os dados digitados
-	$nome = $_POST['nome'];
-	$email = $_POST['email'];
-	$tipo = $_POST['tipo'];
+	$nome = htmlspecialchars($_POST['nome']);
+	$email =  htmlspecialchars($_POST['email']);
+	$tipo =  htmlspecialchars($_POST['tipo']);
 
 	//capturando a senha e codificando 
 	$senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);

@@ -25,8 +25,8 @@ if (isset($_POST['entrar'])) {
 	}
 
 	// Capturando os dados digitados
-	$email = $_POST['email'];
-	$senha = $_POST['senha'];
+	$email = mysqli_real_escape_string($conexao, $_POST['email']);
+	$senha = mysqli_real_escape_string($conexao, $_POST['senha']);
 	/* 1) Buscnfdo no banco de dados, através do e-mail digitado, se existe um usuário cadastrado. */
 
 	$usuario = buscarUsuario($conexao, $email);

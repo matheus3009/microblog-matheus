@@ -19,9 +19,10 @@ $dadosNoticia = lerUmaNoticia(
 );
 
 if(isset($_POST['atualizar'])){
-    $titulo = $_POST['titulo'];
-    $texto = $_POST['texto'];
-    $resumo = $_POST['resumo'];
+    $titulo = htmlspecialchars($_POST['titulo']);
+	$texto = htmlspecialchars($_POST['texto']);
+	$resumo = htmlspecialchars($_POST['resumo']);
+
 
     /* Lógica para a imagem */
 
