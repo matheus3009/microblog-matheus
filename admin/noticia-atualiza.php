@@ -5,7 +5,7 @@ require_once "../inc/funcoes-noticias.php";
 
 
 // Capturando o id a notícia
-$idNoticia = $_GET['id'];
+$idNoticia = (int)$_GET['id'];
 
 // Capturando o id do usuário logado 
 $idUsuario = $_SESSION['id'];

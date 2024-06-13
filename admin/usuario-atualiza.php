@@ -5,7 +5,7 @@ require_once "../inc/funcoes-usuarios.php";
 verificaNivel();
 /* Pegando o valor do parâmetro id vindo da URL */
 
-$id = $_GET['id'];
+$id = (int)$_GET['id'];
 
 /* Executando a função com o id e recuperando os dados do usuário selecionado */
 

@@ -7,7 +7,7 @@ verificaAcesso();
 verificaNivel();
 
 // Chamar/executar a função que irá fazer o DELETE
-$id = $_GET['id'];
+$id = (int)$_GET['id'];
 // Redirecionar para a página de usuários
 excluirUsuario($conexao, $id);
 
